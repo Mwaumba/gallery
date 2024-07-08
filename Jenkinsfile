@@ -3,7 +3,7 @@ pipeline {
 
     environment {
       
-        MONGO_URI = mongodb+srv://Mwaumba:<password>@gallerycluster.ro7byhq.mongodb.net/?retryWrites=true&w=majority&appName=galleryCluster
+        MONGO_URI = 'mongodb+srv://Mwaumba:Pilot2005@gallerycluster.ro7byhq.mongodb.net/?retryWrites=true&w=majority&appName=galleryCluster'
         EMAIL_RECIPIENT = 'mmwafuga@gmail.com'
         SLACK_WEBHOOK = credentials('https://hooks.slack.com/services/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')
             }
