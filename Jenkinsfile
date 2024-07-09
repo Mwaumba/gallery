@@ -34,17 +34,7 @@ pipeline {
                 // Run tests
                 sh 'npm test'
             }
-            post {
-                success {
-                    echo 'Tests passed successfully!'
-                }
-                failure {
-                    echo 'Tests failed! Sending email notification...'
-                    emailext body: "Tests failed on Jenkins for branch: ${env.BRANCH_NAME}", 
-                             recipientProviders: [culprits(), requestor()],
-                             subject: "Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                             to: "${EMAIL_RECIPIENT}"
-            
+         
         }
 
         stage('Deploy to Render') {
