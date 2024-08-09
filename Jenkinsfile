@@ -4,7 +4,7 @@ pipeline {
     environment {
         MONGO_URI = 'mongodb+srv://Mwaumba:Pilot2005@gallerycluster.ro7byhq.mongodb.net/?retryWrites=true&w=majority&appName=galleryCluster'
         EMAIL_RECIPIENT = 'mmwafuga@gmail.com'
-        SLACK_WEBHOOK = credentials('https://hooks.slack.com/services/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')
+        SLACK_WEBHOOK = credentials('https://hooks.slack.com/services/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')
     }
 
     stages {
@@ -14,6 +14,10 @@ pipeline {
                 git url: 'https://github.com/Mwaumba/gallery.git', branch: 'main'
             }
         }
+         stage('Notify Slack') {
+            steps {
+                slackSend(channel: '#ip', message: "Pipeline notification", teamDomain: 'Mwaumba Mwafuga', token: SLACK_WEBHOOK)
+            }
 
         stage('Install Dependencies') {
             steps {
