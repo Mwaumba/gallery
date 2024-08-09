@@ -14,10 +14,12 @@ pipeline {
                 git url: 'https://github.com/Mwaumba/gallery.git', branch: 'main'
             }
         }
-         stage('Notify Slack') {
+
+        stage('Notify Slack') {
             steps {
-                slackSend(channel: '#ip', message: "Pipeline notification", teamDomain: 'Mwaumba Mwafuga', token: SLACK_WEBHOOK)
+                slackSend(channel: '#ip', message: "Pipeline notification", token: SLACK_WEBHOOK)
             }
+        }
 
         stage('Install Dependencies') {
             steps {
