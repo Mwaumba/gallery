@@ -69,7 +69,11 @@ pipeline {
             echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed!'
+          echo 'Tests failed! Sending email notification...'
+            emailext body: "Tests failed on Jenkins for branch: ${env.BRANCH_NAME}", 
+                     recipientProviders: [culprits(), requestor()],
+                     subject: "Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                     to: "${EMAIL_RECIPIENT}"
         }
     }
 }
