@@ -17,7 +17,7 @@ pipeline {
 
         stage('Notify Slack') {
             steps {
-                slackSend(channel: '#ip', message: "Pipeline notification", token: SLACK_WEBHOOK)
+                slackSend(channel: '#ip', message: "Pipeline notification", token: slack-webhook)
             }
         }
 
